@@ -6,6 +6,8 @@ import {
   Stack,
   Input,
   HStack,
+  Flex,
+  Button,
 } from "@chakra-ui/react"
 
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout"
@@ -48,7 +50,7 @@ export default function Main() {
 
   return (
     <>
-      <Box w="100%">
+      <Box w="100%" mb="50px">
         <Stack as={Box} textAlign={"center"} py={10}>
           <Heading fontWeight={800} fontSize={72} lineHeight={"110%"} mb={30}>
             <Text
@@ -67,11 +69,11 @@ export default function Main() {
           </Text>
         </Stack>
 
-        <HStack h={20} justifyContent="space-arund">
-          <Text w="40%">Upload your pdf</Text>
+        {/* <HStack h={20} justifyContent="space-around" w="80%" bg="red">
           <Input type="file" w="40%" onChange={handleFIle} />
           {pdfError && <Text color="red"> {pdfError}</Text>}
-        </HStack>
+        </HStack> */}
+
         <Stack
           direction="row"
           w="100hv"
@@ -80,7 +82,7 @@ export default function Main() {
           px={20}
           gap={1}
         >
-          <Box background="red" w="80%">
+          <Box background="red" w="70%">
             {pdfFile && (
               <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.min.js">
                 <Viewer fileUrl={pdfFile}></Viewer>
@@ -89,8 +91,11 @@ export default function Main() {
 
             {!pdfFile && <>No file is selected yet</>}
           </Box>
-          <Box background="green" w="20%">
-            chau
+          <Box background="green" w="30%" px="30px">
+            <Text textAlign="center" fontWeight="bold" fontSize="2rem">
+              Upload your pdf
+            </Text>
+            <Input type="file" onChange={handleFIle} h={10} />
           </Box>
         </Stack>
       </Box>
